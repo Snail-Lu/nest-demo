@@ -10,7 +10,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { RbacInterceptor } from 'src/interceptor/rbac.interceptor';
 import { CommodityService } from './commodity.service';
 import { roleConstants as role } from '../auth/constants';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('commodity')
 @Controller('commodity')
 export class CommodityController {
   constructor(private readonly commodityService: CommodityService) {}

@@ -2,8 +2,11 @@ import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from './user.service';
 import { ValidationPipe } from '../../pipe/validation.pipe';
-import { RegisterInfoDTO } from './user.dto';
+import { RegisterInfoDTO, LoginDTO } from './user.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth() // Swagger的jwt验证
+@ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(
@@ -31,7 +34,7 @@ export class UserController {
   }
 
   @Post('login')
-  async login(@Body() loginParmas: any) {
+  async login(@Body() loginParmas: LoginDTO) {
     const authResult = await this.authService.validateUser(
       loginParmas.username,
       loginParmas.password,
