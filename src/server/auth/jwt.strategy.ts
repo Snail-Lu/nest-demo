@@ -17,9 +17,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   // JWT验证: 守卫调用
   async validate(payload: any) {
     return {
-      userId: payload.sub,
       username: payload.username,
-      realName: payload.realName,
+      email: payload.email,
       role: payload.role,
     };
   }

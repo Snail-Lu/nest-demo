@@ -45,6 +45,7 @@ export class UserService {
         password: hashPwd,
         email,
         pwd_salt: salt,
+        role: 3,
       });
 
       return {

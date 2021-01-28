@@ -16,4 +16,7 @@ export class User {
 
   @Column()
   pwd_salt: string;
+
+  @Column()
+  role: number;
 }
