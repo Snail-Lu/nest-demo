@@ -25,6 +25,7 @@ export class AllExceptionFilter implements ExceptionFilter {
       Status code: ${status}
       Response: ${exception.toString()}`;
     Logger.info(logFormat);
+
     response.status(status).json({
       statusCode: status,
       msg: `Service Error: ${exception}`,

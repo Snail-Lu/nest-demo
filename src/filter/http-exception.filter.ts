@@ -7,7 +7,7 @@ import {
 import { Request, Response } from 'express';
 import { Logger } from '../utils/log4js';
 
-@Catch()
+@Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
