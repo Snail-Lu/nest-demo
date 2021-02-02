@@ -9,6 +9,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // 设置全局路由前缀
+  app.setGlobalPrefix('api');
   // for parsing application/json
   app.use(express.json());
   // form parsing application/x-www-form-urlencoded
@@ -23,7 +25,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   // 配置 Swagger
   const options = new DocumentBuilder()
-    .addBearerAuth() // 开启BeareAuth授权认证
+    // .addBearerAuth() // 开启BeareAuth授权认证
     .setTitle('Nest zero to one')
     .setDescription('The nest-zero-to-one API description')
     .setVersion('1.0')

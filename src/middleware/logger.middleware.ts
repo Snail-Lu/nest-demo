@@ -1,6 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Logger } from '../utils/log4js';
 import { Request, Response } from 'express';
+import axios from 'axios';
 
 // 类式中间件
 @Injectable()
@@ -27,6 +28,12 @@ export class LoggerMiddleware implements NestMiddleware {
 // 函数式中间件
 export function logger(req: Request, res: Response, next: () => any) {
   const code = res.statusCode; // 响应状态码
+
+  // 设置axios请求token
+  const { token } = req.headers;
+  if (token) {
+    axios.defaults.headers.common['token'] = token;
+  }
   next();
   // 组装日志信息
   const logFormat = `

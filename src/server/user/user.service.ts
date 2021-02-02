@@ -1,82 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './user.entity';
-import { makeSalt, encrypt } from '../../utils/cryptogram'; // 引入加密函数
+import { apiBase, apiUrl } from '@api/index';
+import axios from 'axios';
 
 @Injectable()
 export class UserService {
-  constructor(
-    // 注入userRepository存储库，后文中就可以使用Repository API进行数据库操作
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-  ) {}
-
   /**
-   * 用户注册
-   * @param username
-   * @param password
-   * @param email
+   * code登录
    */
-  async register(username: string, password: string, email: string) {
-    // 用户名校验
-    const sameUser = await this.findOne({ username });
-    if (sameUser) {
-      return {
-        code: 400,
-        msg: '用户已存在',
-      };
-    }
-
-    // 邮箱校验
-    const sameEmail = await this.findOne({ email });
-    if (sameEmail) {
-      return {
-        code: 400,
-        msg: '该邮箱已注册',
-      };
-    }
-
-    try {
-      const salt = makeSalt();
-      const hashPwd = encrypt(password, salt);
-      await this.userRepository.save({
-        username,
-        password: hashPwd,
-        email,
-        pwd_salt: salt,
-        role: 3,
-      });
-
-      return {
-        code: 200,
-        msg: '新增成功',
-      };
-    } catch (e) {
-      return {
-        code: 503,
-        msg: `Service error: ${e}`,
-      };
-    }
+  async login(code) {
+    const url = apiBase + apiUrl.user.login;
+    const res = await axios.post(url, {
+      code,
+    });
+    return res;
   }
 
   /**
-   * 查找用户
-   * @param username
+   * 更新用户信息
+   * @param params
    */
-  async findOne(params: any): Promise<any | undefined> {
-    try {
-      const user = await this.userRepository.findOne(params);
-      return user;
-    } catch (e) {
-      return void 0;
-    }
+  async updateUnionId(params) {
+    const url = apiBase + apiUrl.user.updateUnionId;
+    const res = await axios.post(url, params);
+    return res;
   }
 
   /**
-   * 查看全部用户数据
+   * 更新用户手机号码
+   * @param params
    */
-  findAll(): Promise<User[]> {
-    return this.userRepository.find();
+  async updateMobile(params) {
+    const url = apiBase + apiUrl.user.updateMobile;
+    const res = await axios.post(url, params);
+    return res;
   }
 }

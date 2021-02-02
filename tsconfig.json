@@ -10,6 +10,15 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@api/*": ["src/api/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@pipe/*": ["src/pipe/*"],
+      "@server/*": ["src/server/*"],
+      "@filter/*": ["src/filter"],
+      "@interceptor/*": ["src/interceptor"]
+    } ,
     "incremental": true
   }
 }

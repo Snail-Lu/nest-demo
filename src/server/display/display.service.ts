@@ -9,12 +9,10 @@ export class DisplayService {
    * @param body
    * @param headers
    */
-  async getConfigByKey(body, headers) {
+  async getConfigByKey(body) {
     const { configKey } = body;
-    const { token } = headers;
     const url = apiBase + apiUrl.display.getConfigByKey;
 
-    axios.defaults.headers.common['token'] = token;
     const res = await axios.post(url, {
       configKey,
     });
@@ -25,11 +23,8 @@ export class DisplayService {
    * 获取默认门店
    * @param headers
    */
-  async getDefaultShop(headers) {
-    const { token } = headers;
+  async getDefaultShop() {
     const url = apiBase + apiUrl.display.getDefaultShop;
-
-    axios.defaults.headers.common['token'] = token;
     const res = await axios.get(url);
     return res;
   }
@@ -39,12 +34,10 @@ export class DisplayService {
    * @param body
    * @param headers
    */
-  async getCountNumAndAvgGrade(body, headers) {
+  async getCountNumAndAvgGrade(body) {
     const { goodsn } = body;
-    const { token } = headers;
     const url = apiBase + apiUrl.display.getCountNumAndAvgGrade;
 
-    axios.defaults.headers.common['token'] = token;
     const res = await axios.put(url, { goodsn });
     return res;
   }
@@ -53,11 +46,9 @@ export class DisplayService {
    * 获取助力好友列表
    * @param headers
    */
-  async getAssistanceUser(headers) {
-    const { token } = headers;
+  async getAssistanceUser() {
     const url = apiBase + apiUrl.display.getAssistanceUser;
 
-    axios.defaults.headers.common['token'] = token;
     const res = await axios.delete(url);
     return res;
   }
@@ -65,12 +56,10 @@ export class DisplayService {
   /**
    * 获取商品列表
    */
-  async getProductList(body, headers) {
+  async getProductList() {
     // const { pageNo, pageSize, sort } = body;
-    const { token } = headers;
     const url = apiBase + apiUrl.display.getProductList;
 
-    axios.defaults.headers.common['token'] = token;
     const res = await axios.head(url);
     return res;
   }

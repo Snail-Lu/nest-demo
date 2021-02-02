@@ -12,7 +12,7 @@ export class AuthService {
 
   // 校验用户信息
   async validateUser(username: string, password: string): Promise<any> {
-    const user = await this.userService.findOne({ username });
+    const user = null;
     if (user) {
       const userHashPwd = user.password;
       const salt = user.pwd_salt;

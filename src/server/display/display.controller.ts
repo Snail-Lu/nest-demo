@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Post,
-  Headers,
-  Get,
-  Put,
-  Delete,
-  Head,
-} from '@nestjs/common';
+import { Body, Controller, Post, Get, Put, Delete, Head } from '@nestjs/common';
 import { DisplayService } from './display.service';
 
 @Controller('display')
@@ -20,8 +11,8 @@ export class DisplayController {
    * @param headers
    */
   @Post('getConfigByKey')
-  getConfigByKey(@Body() body: any, @Headers() headers: any) {
-    return this.displayService.getConfigByKey(body, headers);
+  getConfigByKey(@Body() body: any) {
+    return this.displayService.getConfigByKey(body);
   }
 
   /**
@@ -29,8 +20,8 @@ export class DisplayController {
    * @param headers
    */
   @Get('getDefaultShop')
-  getDefaultShop(@Headers() headers: any) {
-    return this.displayService.getDefaultShop(headers);
+  getDefaultShop() {
+    return this.displayService.getDefaultShop();
   }
 
   /**
@@ -39,8 +30,8 @@ export class DisplayController {
    * @param headers
    */
   @Put('getCountNumAndAvgGrade')
-  getCountNumAndAvgGrade(@Body() body: any, @Headers() headers: any) {
-    return this.displayService.getCountNumAndAvgGrade(body, headers);
+  getCountNumAndAvgGrade(@Body() body: any) {
+    return this.displayService.getCountNumAndAvgGrade(body);
   }
 
   /**
@@ -48,8 +39,8 @@ export class DisplayController {
    * @param headers
    */
   @Delete('getAssistanceUser')
-  getAssistanceUser(@Headers() headers: any) {
-    return this.displayService.getAssistanceUser(headers);
+  getAssistanceUser() {
+    return this.displayService.getAssistanceUser();
   }
 
   /**
@@ -58,7 +49,7 @@ export class DisplayController {
    * @param headers
    */
   @Head('getProductList')
-  getProductList(@Body() body: any, @Headers() headers: any) {
-    return this.displayService.getProductList(body, headers);
+  getProductList() {
+    return this.displayService.getProductList();
   }
 }
