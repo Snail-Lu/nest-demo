@@ -16,7 +16,7 @@ export class UserController {
    * @param loginParmas
    */
   @Post('login')
-  async login(@Body() loginParmas: LoginDTO) {
+  login(@Body() loginParmas: LoginDTO) {
     const { code } = loginParmas;
     return this.userService.login(code);
   }
@@ -26,7 +26,7 @@ export class UserController {
    * @param params
    */
   @Post('updateUnionId')
-  async updateUnionId(@Body() params: UpdateUnionidDTO) {
+  updateUnionId(@Body() params: UpdateUnionidDTO) {
     return this.userService.updateUnionId(params);
   }
 
@@ -35,7 +35,31 @@ export class UserController {
    * @param params
    */
   @Post('updateMobile')
-  async updateMobile(@Body() params) {
+  updateMobile(@Body() params) {
     return this.userService.updateMobile(params);
+  }
+
+  /**
+   * 获取用户会员信息
+   */
+  @Post('getUserCardInfo')
+  getUserCardInfo() {
+    return this.userService.getUserCardInfo();
+  }
+
+  /**
+   * 获取用户储值卡信息
+   */
+  @Post('getStoreCardInfo')
+  getStoreCardInfo() {
+    return this.userService.getStoreCardInfo();
+  }
+
+  /**
+   * 获取员工内内购码
+   */
+  @Post('getStaffActiveCode')
+  getStaffActiveCode() {
+    return this.userService.getStaffActiveCode();
   }
 }

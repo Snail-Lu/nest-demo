@@ -1,7 +1,9 @@
 import { Body, Controller, Post, Get, Put, Delete, Head } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { cateDTO, panelDTO } from './display.dto';
 import { DisplayService } from './display.service';
 
+@ApiTags('display')
 @Controller('display')
 export class DisplayController {
   constructor(private readonly displayService: DisplayService) {}

@@ -33,6 +33,7 @@ export const apiUrl = {
     updateUnionId: '/user/updateUnionId',
     getUserInfo: '/user/getUserInfo',
     getUserCardInfo: '/user/getUserCardInfo',
+    getStoreCardInfo: '/storeCard/getStoreCardInfo',
     updateUserInfo: '/user/updateUserInfo',
     updateMobile: '/user/updateMobile',
     productList: '/search/getSearchProductList',

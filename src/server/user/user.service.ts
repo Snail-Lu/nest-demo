@@ -34,4 +34,31 @@ export class UserService {
     const res = await axios.post(url, params);
     return res;
   }
+
+  /**
+   * 获取用户会员信息
+   */
+  async getUserCardInfo() {
+    const url = apiBase + apiUrl.user.getUserCardInfo;
+    const res = await axios.post(url, {});
+    return res;
+  }
+
+  /**
+   * 获取用户储值卡信息
+   */
+  async getStoreCardInfo() {
+    const url = apiBase + apiUrl.user.getStoreCardInfo;
+    const res = await axios.post(url, {});
+    return res;
+  }
+
+  /**
+   * 获取员工内购码
+   */
+  async getStaffActiveCode(params?: Record<string, unknown>) {
+    const url = apiBase + apiUrl.user.getStaffCode;
+    const res = await axios.post(url, params);
+    return res;
+  }
 }

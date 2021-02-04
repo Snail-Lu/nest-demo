@@ -13,4 +13,14 @@ export class CartService {
     const res = await axios.post(url, {});
     return res;
   }
+
+  /**
+   * 刷新购物车
+   * @param params
+   */
+  async refreshCart() {
+    const url = apiBase + apiUrl.cart.refresh;
+    const res = await axios.post(url, {});
+    return res;
+  }
 }
