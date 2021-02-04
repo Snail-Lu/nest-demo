@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { apiBase, apiUrl } from './../../api/index';
+import { apiBase, apiUrl } from '@api/index';
 
 @Injectable()
 export class DisplayService {
@@ -43,24 +43,19 @@ export class DisplayService {
   }
 
   /**
-   * 获取助力好友列表
-   * @param headers
+   * 获取站点面板数据
    */
-  async getAssistanceUser() {
-    const url = apiBase + apiUrl.display.getAssistanceUser;
+  async getPanelInfo(params) {
+    const url = apiBase + apiUrl.display.getPanelInfo;
 
-    const res = await axios.delete(url);
+    const res = await axios.post(url, params);
     return res;
   }
 
-  /**
-   * 获取商品列表
-   */
-  async getProductList() {
-    // const { pageNo, pageSize, sort } = body;
-    const url = apiBase + apiUrl.display.getProductList;
+  async getCateInfo(params) {
+    const url = apiBase + apiUrl.display.getCateInfo;
 
-    const res = await axios.head(url);
+    const res = await axios.post(url, params);
     return res;
   }
 }

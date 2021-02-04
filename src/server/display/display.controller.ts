@@ -1,4 +1,5 @@
 import { Body, Controller, Post, Get, Put, Delete, Head } from '@nestjs/common';
+import { cateDTO, panelDTO } from './display.dto';
 import { DisplayService } from './display.service';
 
 @Controller('display')
@@ -35,21 +36,19 @@ export class DisplayController {
   }
 
   /**
-   * 获取助力好友列表
-   * @param headers
+   * 获取站点面板数据
+   * @param params
    */
-  @Delete('getAssistanceUser')
-  getAssistanceUser() {
-    return this.displayService.getAssistanceUser();
+  @Post('getResultBySiteMark')
+  getPanelInfo(@Body() params: panelDTO) {
+    return this.displayService.getPanelInfo(params);
   }
 
   /**
-   * 获取商品列表
-   * @param body
-   * @param headers
+   * 获取分类数据
    */
-  @Head('getProductList')
-  getProductList() {
-    return this.displayService.getProductList();
+  @Post('getThemeCodeFloorByThemeCode')
+  getCateInfo(@Body() params: cateDTO) {
+    return this.displayService.getCateInfo(params);
   }
 }

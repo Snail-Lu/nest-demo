@@ -8,9 +8,9 @@ export class CartService {
    * 获取购物车数量
    * @param params
    */
-  async getCartGoodsNum(params) {
+  async getCartGoodsNum() {
     const url = apiBase + apiUrl.cart.getCartNum;
-    const res = await axios.post(url, params);
+    const res = await axios.post(url, {});
     return res;
   }
 }

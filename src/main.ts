@@ -26,8 +26,8 @@ async function bootstrap() {
   // 配置 Swagger
   const options = new DocumentBuilder()
     // .addBearerAuth() // 开启BeareAuth授权认证
-    .setTitle('Nest zero to one')
-    .setDescription('The nest-zero-to-one API description')
+    .setTitle('Nest-Demo')
+    .setDescription('The Nest-Demo API description')
     .setVersion('1.0')
     .addTag('test')
     .build();

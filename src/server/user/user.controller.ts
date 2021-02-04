@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from './user.service';
 import { ValidationPipe } from '../../pipe/validation.pipe';
-import { RegisterInfoDTO, LoginDTO } from './user.dto';
+import { RegisterInfoDTO, LoginDTO, UpdateUnionidDTO } from './user.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 // @ApiBearerAuth() // Swagger的jwt验证
@@ -16,7 +16,7 @@ export class UserController {
    * @param loginParmas
    */
   @Post('login')
-  async login(@Body() loginParmas) {
+  async login(@Body() loginParmas: LoginDTO) {
     const { code } = loginParmas;
     return this.userService.login(code);
   }
@@ -26,7 +26,7 @@ export class UserController {
    * @param params
    */
   @Post('updateUnionId')
-  async updateUnionId(@Body() params) {
+  async updateUnionId(@Body() params: UpdateUnionidDTO) {
     return this.userService.updateUnionId(params);
   }
 

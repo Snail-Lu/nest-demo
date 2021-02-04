@@ -22,12 +22,25 @@ export class RegisterInfoDTO {
   readonly role?: number;
 }
 
+/**
+ * 登录DTO
+ */
 export class LoginDTO {
   @ApiProperty()
-  @IsNotEmpty({ message: '用户名不能为空' })
-  @IsString({ message: '用户名必须为字符串' })
-  readonly username: string;
+  @IsNotEmpty({ message: 'code不能为空' })
+  readonly code: string;
+}
+
+/**
+ *
+ */
+export class UpdateUnionidDTO {
   @ApiProperty()
-  @IsNotEmpty({ message: '密码不能为空' })
-  readonly password: string;
+  readonly encryptedData: string;
+
+  @ApiProperty()
+  readonly flag: number;
+
+  @ApiProperty()
+  readonly iv: string;
 }
